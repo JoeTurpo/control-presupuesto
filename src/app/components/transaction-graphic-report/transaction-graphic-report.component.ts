@@ -30,7 +30,7 @@ export class TransactionGraphicReportComponent implements AfterViewInit {
   service = inject(TransactionService);
 
   ngAfterViewInit() {
-
+// GRAFICO DE BARRAS
     const transactions = this.service.transactions();
 //    const ingreso = transactions.filter(t => t.type === 'Ingreso').length;
 //    const gasto = transactions.filter(t => t.type === 'Gasto').length;
@@ -57,6 +57,7 @@ export class TransactionGraphicReportComponent implements AfterViewInit {
 
 
 
+//  GRAFICO DE LINEAS(AMOUNT BY DATE)
     const fechasUnicas = Array.from(new Set(transactions.map(t => t.date))).sort();
     const ingresoPorFecha = fechasUnicas.map(date =>
       transactions.filter(t => t.type === 'Ingreso' && t.date === date)
