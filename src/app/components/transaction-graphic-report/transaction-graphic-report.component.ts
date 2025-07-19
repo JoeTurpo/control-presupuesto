@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, AfterViewInit, ViewChild, ElementRef, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Chart, BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend, LineController, LineElement, PointElement } from 'chart.js';
 import { TransactionService } from '../../services/transaction.service';
@@ -27,8 +27,7 @@ export class TransactionGraphicReportComponent implements AfterViewInit {
   @ViewChild('lineChartCanvas', { static: true }) lineChartCanvas!: ElementRef<HTMLCanvasElement>;
   barChart!: Chart;
   lineChart!: Chart;
-
-  constructor(private service: TransactionService) {}
+  service = inject(TransactionService);
 
   ngAfterViewInit() {
 
